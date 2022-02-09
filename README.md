@@ -1,8 +1,8 @@
-# ox_basic
+# ox_esx_recipe
 
-Recipe for deploying an ox_basic server
+Recipe for deploying an ox esx server that is compatible with ox_inventory.
 
 This recipe is currently a work in progress, please report any issues or bugs.
 
 Paste this link into the recipe link field while creating a new server in txadmin:
-`https://raw.githubusercontent.com/overextended/ox_recipes/main/ox_basic.yaml`
+`https://raw.githubusercontent.com/overextended/ox_recipes/esx/recipe.yaml`
