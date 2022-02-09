@@ -87,6 +87,10 @@ tasks:
     src: ./tmp/ox_inventory.zip
     dest: ./resources
 
+  - action: copy_path
+    src: ./resources/ox_inventory/config.cfg
+    dest: ./ox_inventory.cfg
+
   ## fivem-appearance
   - action: download_file
     url: https://github.com/overextended//fivem-appearance/releases/latest/download//fivem-appearance.zip
