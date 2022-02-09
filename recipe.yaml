@@ -1,10 +1,10 @@
 $engine: 3
 $minFxVersion: 5104
 $onesync: legacy
-name: OxBasic
-version: 1.1.0
+name: ox_esx_recipe
+version: 1.2.0
 author: DokaDoka
-description: Basic Overextended template.
+description: Overextended ESX compatible with ox_inventory
 
 tasks:
   ## Download default CFX resources
@@ -26,24 +26,24 @@ tasks:
   ## Download and prepare server.cfg, database and icon
   - action: download_github
     src: https://github.com/overextended/ox_recipes
-    ref: main
-    dest: ./tmp/ox_basic
+    ref: esx
+    dest: ./tmp/recipe
 
   - action: move_path
-    src: ./tmp/ox_basic/server.cfg
+    src: ./tmp/recipe/server.cfg
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/ox_basic/oxpog.png
+    src: ./tmp/recipe/oxpog.png
     dest: ./oxpog.png
 
   - action: replace_string
     mode: all_vars
-    file: ./tmp/ox_basic/ox_basic.sql
+    file: ./tmp/recipe/esx.sql
 
   - action: connect_database
   - action: query_database
-    file: ./tmp/ox_basic/ox_basic.sql
+    file: ./tmp/recipe/esx.sql
 
   ## Download bulk esx scripts
   - action: download_github
