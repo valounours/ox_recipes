@@ -1,8 +1,11 @@
-# ox_basic
+# ox_recipes
 
-Recipe for deploying an ox_basic server
+A collection of recipes created and maintained by the Overextended team, available on the other branches of this repository.
 
-This recipe is currently a work in progress, please report any issues or bugs.
+## Production ready recipes
 
-Paste this link into the recipe link field while creating a new server in txadmin:
-`https://raw.githubusercontent.com/overextended/ox_recipes/main/ox_basic.yaml`
+The following links can be pasted straight into txAdmin after selecting `Remote URL Template` during setup.
+
+- ox_esx_recipe
+
+`https://raw.githubusercontent.com/overextended/ox_recipes/esx/recipe.yaml`
