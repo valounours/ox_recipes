@@ -91,6 +91,11 @@ tasks:
     src: ./resources/ox_inventory/config.cfg
     dest: ./ox_inventory.cfg
 
+  - action: replace_string
+    file: ./ox_inventory.cfg
+    search: 'setr inventory:framework ""'
+    replace: 'setr inventory:framework "esx"'
+
   ## fivem-appearance
   - action: download_file
     url: https://github.com/overextended/fivem-appearance/releases/latest/download/fivem-appearance.zip
