@@ -22,6 +22,7 @@ CREATE TABLE `users` (
 	`skin` LONGTEXT NULL DEFAULT NULL,
 	`phone_number` VARCHAR(20) DEFAULT NULL,
 	`status` LONGTEXT NULL,
+	`loadout` LONGTEXT NULL DEFAULT NULL,
 	`last_property` VARCHAR(255) NULL,
 	`is_dead` TINYINT(1) NULL DEFAULT '0',
 	`disabled` TINYINT(1) NULL DEFAULT '0',
@@ -82,6 +83,7 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 CREATE TABLE `jobs` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) DEFAULT NULL,
+  	`whitelisted` bit(1) NOT NULL DEFAULT b'1',
 
 	PRIMARY KEY (`name`)
 );
