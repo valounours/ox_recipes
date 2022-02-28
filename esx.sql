@@ -98,13 +98,13 @@ CREATE TABLE `jobs` (
 
 INSERT INTO `jobs` (name, label, whitelisted) VALUES
 	('unemployed', 'Unemployed', b'0'),
-	('ambulance', 'EMS', b'1'),
-	('mechanic', 'Mechanic', b'1'),
-	('police', 'Police', b'0'),
-	('taxi', 'Taxi', b'1'),
-	('cardealer', 'Cardealer', b'0'),
-	('banker', 'Banker', b'0'),
-	('realestateagent', 'Realtor', b'0')
+	('ambulance', 'EMS', b'0'),
+	('mechanic', 'Mechanic', b'0'),
+	('police', 'Police', b'1'),
+	('taxi', 'Taxi', b'0'),
+	('cardealer', 'Cardealer', b'1'),
+	('banker', 'Banker', b'1'),
+	('realestateagent', 'Realtor', b'1')
 ;
 
 CREATE TABLE `multicharacter_slots` (
