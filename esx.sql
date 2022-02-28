@@ -76,7 +76,16 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary) VALUES
 	('cardealer', 0, 'recruit', 'Recruit', 10),
 	('cardealer', 1, 'novice', 'Novice', 25),
 	('cardealer', 2, 'experienced', 'Experienced', 40),
-	('cardealer', 3, 'boss', 'Boss', 0)
+	('cardealer', 3, 'boss', 'Boss', 0),
+	('banker', 0, 'advisor', 'Advisor', 10),
+	('banker', 1, 'banker', 'Banker', 20),
+	('banker', 2, 'business_banker', 'Business Banker', 30),
+	('banker', 3, 'trader', 'Trader', 40),
+	('banker', 4, 'boss', 'Boss', 0),
+	('realestateagent', 0, 'renting', 'Renting Agent', 10),
+	('realestateagent', 1, 'agent', 'Agent', 25),
+	('realestateagent', 2, 'Management', 'Management', 40),
+	('realestateagent', 3, 'boss', 'Boss', 0)
 ;
 
 CREATE TABLE `jobs` (
@@ -87,13 +96,15 @@ CREATE TABLE `jobs` (
 	PRIMARY KEY (`name`)
 );
 
-INSERT INTO `jobs` (name, label) VALUES
-	('unemployed', 'Unemployed'),
-	('ambulance', 'EMS'),
-	('mechanic', 'Mechanic'),
-	('police', 'Police'),
-	('taxi', 'Taxi'),
-	('cardealer', 'Cardealer')
+INSERT INTO `jobs` (name, label, whitelisted) VALUES
+	('unemployed', 'Unemployed', b'0'),
+	('ambulance', 'EMS', b'1'),
+	('mechanic', 'Mechanic', b'1'),
+	('police', 'Police', b'0'),
+	('taxi', 'Taxi', b'1'),
+	('cardealer', 'Cardealer', b'0'),
+	('banker', 'Banker', b'0'),
+	('realestateagent', 'Realtor', b'0')
 ;
 
 CREATE TABLE `multicharacter_slots` (
@@ -138,7 +149,8 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 	('drive', 'Drivers License'),
 	('drive_bike', 'Motorcycle License'),
 	('drive_truck', 'Commercial Drivers License'),
-	('boat', 'Boat License')
+	('boat', 'Boat License'),
+	('weed_processing', 'Weed Processing License')
 ;
 
 CREATE TABLE `user_licenses` (
@@ -173,6 +185,9 @@ INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_police', 'Police', 1),
 	('society_taxi', 'Taxi', 1),
 	('society_cardealer', 'Cardealer', 1),
+	('society_banker', 'Bank', 1),
+	('society_realestateagent', 'Real Estate Agency', 1),
+	('bank_savings', 'Bank Savings', 0),
 	('property_black_money', 'Money Sale Property', 0)
 ;
 
@@ -706,4 +721,15 @@ CREATE TABLE `outfits` (
 
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `id_UNIQUE` (`id`)
+);
+
+CREATE TABLE `user_parkings` (
+  
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) DEFAULT NULL,
+  `garage` varchar(60) DEFAULT NULL,
+  `zone` int(11) NOT NULL,
+  `vehicle` LONGTEXT,
+
+  PRIMARY KEY (`id`)
 );
