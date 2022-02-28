@@ -63,11 +63,11 @@ tasks:
     search: 'Config.Multichar                = false'
     replace: 'Config.Multichar                = true'
 
-  ## pe-lualib
+  ## ox_lib
   - action: download_github
-    src: https://github.com/project-error/pe-lualib
+    src: https://github.com/overextended/ox_lib
     ref: master
-    dest: ./resources/pe-lualib
+    dest: ./resources/ox_lib
 
   ## oxmysql
   - action: download_file
