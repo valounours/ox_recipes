@@ -2,7 +2,7 @@ $engine: 3
 $minFxVersion: 5104
 $onesync: legacy
 name: ox_esx_recipe
-version: 1.3.0
+version: 1.3.1
 author: DokaDoka
 description: Overextended ESX compatible with ox_inventory
 
@@ -154,6 +154,12 @@ tasks:
     path: ./resources/[esx]/esx_skin
   - action: remove_path
     path: ./resources/[esx]/skinchanger
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_accessories
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_animations
+  - action: remove_path
+    path: ./resources/[esx_addons]/esx_barbershop
   - action: remove_path
     path: ./resources/[esx_addons]/esx_clotheshop
   - action: remove_path
