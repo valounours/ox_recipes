@@ -97,7 +97,7 @@ INSERT INTO `jobs` (name, label) VALUES
 ;
 
 CREATE TABLE `multicharacter_slots` (
-	`identifier` VARCHAR(60) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`identifier` VARCHAR(60) NOT NULL,
 	`slots` INT(11) NOT NULL,
 
 	PRIMARY KEY (`identifier`) USING BTREE,
