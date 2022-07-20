@@ -1,11 +1,3 @@
-ALTER DATABASE `{{dbName}}`
-	DEFAULT CHARACTER SET UTF8MB4;
-	
-ALTER DATABASE `{{dbName}}`
-	DEFAULT COLLATE UTF8MB4_UNICODE_CI;
-
-USE `{{dbName}}`;
-
 CREATE TABLE `users` (
 	`identifier` VARCHAR(60) NOT NULL,
 	`accounts` LONGTEXT NULL DEFAULT NULL,
@@ -48,7 +40,7 @@ CREATE TABLE `job_grades` (
 	`label` VARCHAR(50) NOT NULL,
 	`salary` INT NOT NULL,
 	`skin_male` LONGTEXT NOT NULL,
-	`skin_female` LONGTEXT NOT NULL',
+	`skin_female` LONGTEXT NOT NULL,
 
 	PRIMARY KEY (`id`)
 );
