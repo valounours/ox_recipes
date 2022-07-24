@@ -41,7 +41,7 @@ CREATE TABLE `items` (
 );
 
 CREATE TABLE `job_grades` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `job_name` varchar(50) DEFAULT NULL,
   `grade` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
