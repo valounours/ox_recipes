@@ -41,17 +41,15 @@ CREATE TABLE `items` (
 );
 
 CREATE TABLE `job_grades` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`job_name` VARCHAR(50) DEFAULT NULL,
-	`grade` INT NOT NULL,
-	`name` VARCHAR(50) NOT NULL,
-	`label` VARCHAR(50) NOT NULL,
-	`salary` INT NOT NULL,
-	`skin_male` LONGTEXT NOT NULL DEFAULT '{}',
-	`skin_female` LONGTEXT NOT NULL DEFAULT '{}',
-
-	PRIMARY KEY (`id`)
-);
+  `id` int(11) NOT NULL,
+  `job_name` varchar(50) DEFAULT NULL,
+  `grade` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `label` varchar(50) NOT NULL,
+  `salary` int(11) NOT NULL,
+  `skin_male` longtext NOT NULL,
+  `skin_female` longtext NOT NULL
+) ENGINE=InnoDB;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary) VALUES
 	('unemployed', 0, 'unemployed', 'Unemployed', 200),
