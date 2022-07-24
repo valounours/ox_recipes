@@ -39,11 +39,9 @@ CREATE TABLE `job_grades` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 	`salary` INT NOT NULL,
-	`skin_male` LONGTEXT,
-	`skin_female` LONGTEXT,
-
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  	`skin_male` longtext NOT NULL,
+  	`skin_female` longtext NOT NULL
+) ENGINE=InnoDB;
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary) VALUES
 	('unemployed', 0, 'unemployed', 'Unemployed', 200),
