@@ -47,8 +47,8 @@ CREATE TABLE `job_grades` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 	`salary` INT NOT NULL,
-	`skin_male` LONGTEXT NOT NULL,
-	`skin_female` LONGTEXT NOT NULL,
+	`skin_male` LONGTEXT NOT NULL DEFAULT '{}',
+	`skin_female` LONGTEXT NOT NULL DEFAULT '{}',
 
 	PRIMARY KEY (`id`)
 );
