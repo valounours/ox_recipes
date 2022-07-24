@@ -1,3 +1,11 @@
+ALTER DATABASE `{{dbName}}`
+	DEFAULT CHARACTER SET UTF8MB4;
+	
+ALTER DATABASE `{{dbName}}`
+	DEFAULT COLLATE UTF8MB4_UNICODE_CI;
+
+USE `{{dbName}}`;
+
 CREATE TABLE `users` (
 	`identifier` VARCHAR(60) NOT NULL,
 	`accounts` LONGTEXT NULL DEFAULT NULL,
@@ -20,7 +28,7 @@ CREATE TABLE `users` (
 	`disabled` TINYINT(1) NULL DEFAULT '0',
 
 	PRIMARY KEY (`identifier`)
-) ENGINE=InnoDB ;
+);
 
 CREATE TABLE `items` (
 	`name` VARCHAR(50) NOT NULL,
@@ -30,7 +38,7 @@ CREATE TABLE `items` (
 	`can_remove` TINYINT NOT NULL DEFAULT 1,
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `job_grades` (
 	`id` INT NOT NULL AUTO_INCREMENT,
@@ -39,9 +47,11 @@ CREATE TABLE `job_grades` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 	`salary` INT NOT NULL,
-  	`skin_male` longtext NOT NULL,
-  	`skin_female` longtext NOT NULL
-) ENGINE=InnoDB;
+	`skin_male` LONGTEXT NOT NULL,
+	`skin_female` LONGTEXT NOT NULL,
+
+	PRIMARY KEY (`id`)
+);
 
 INSERT INTO `job_grades` (job_name, grade, name, label, salary) VALUES
 	('unemployed', 0, 'unemployed', 'Unemployed', 200),
@@ -84,7 +94,7 @@ CREATE TABLE `jobs` (
   	`whitelisted` bit(1) NOT NULL DEFAULT b'1',
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `jobs` (name, label, whitelisted) VALUES
 	('unemployed', 'Unemployed', b'0'),
@@ -103,7 +113,7 @@ CREATE TABLE `multicharacter_slots` (
 
 	PRIMARY KEY (`identifier`) USING BTREE,
 	INDEX `slots` (`slots`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `owned_vehicles` (
 	`owner` VARCHAR(60) NOT NULL,
@@ -117,7 +127,7 @@ CREATE TABLE `owned_vehicles` (
 
 	PRIMARY KEY (`plate`),
 	INDEX `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `ox_inventory` (
 	`owner` VARCHAR(60) DEFAULT NULL,
@@ -125,14 +135,14 @@ CREATE TABLE `ox_inventory` (
 	`data` LONGTEXT DEFAULT NULL,
 	`lastupdated` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 	UNIQUE KEY `owner` (`owner`, `name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `licenses` (
 	`type` VARCHAR(60) NOT NULL,
 	`label` VARCHAR(60) NOT NULL,
 
 	PRIMARY KEY (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
 	('dmv', 'Driving Permit'),
@@ -150,7 +160,7 @@ CREATE TABLE `user_licenses` (
 
 	PRIMARY KEY (`id`),
 	INDEX `owner` (`owner`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `society_moneywash` (
 	`id` INT NOT NULL AUTO_INCREMENT,
@@ -159,7 +169,7 @@ CREATE TABLE `society_moneywash` (
 	`amount` INT NOT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `addon_account` (
 	`name` VARCHAR(60) NOT NULL,
@@ -167,7 +177,7 @@ CREATE TABLE `addon_account` (
 	`shared` INT NOT NULL,
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_ambulance', 'EMS', 1),
@@ -190,7 +200,7 @@ CREATE TABLE `addon_account_data` (
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `index_addon_account_data_account_name_owner` (`account_name`, `owner`),
 	INDEX `index_addon_account_data_account_name` (`account_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `addon_inventory` (
 	`name` VARCHAR(60) NOT NULL,
@@ -198,7 +208,7 @@ CREATE TABLE `addon_inventory` (
 	`shared` INT NOT NULL,
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
 	('society_ambulance', 'EMS', 1),
@@ -220,7 +230,7 @@ CREATE TABLE `addon_inventory_items` (
 	INDEX `index_addon_inventory_items_inventory_name_name` (`inventory_name`, `name`),
 	INDEX `index_addon_inventory_items_inventory_name_name_owner` (`inventory_name`, `name`, `owner`),
 	INDEX `index_addon_inventory_inventory_name` (`inventory_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `datastore` (
 	`name` VARCHAR(60) NOT NULL,
@@ -228,7 +238,7 @@ CREATE TABLE `datastore` (
 	`shared` INT NOT NULL,
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `datastore` (name, label, shared) VALUES
 	('society_ambulance', 'EMS', 1),
@@ -247,7 +257,7 @@ CREATE TABLE `datastore_data` (
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `index_datastore_data_name_owner` (`name`, `owner`),
 	INDEX `index_datastore_data_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `owned_properties` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -257,7 +267,7 @@ CREATE TABLE `owned_properties` (
 	`owner` VARCHAR(60) NOT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `properties` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -276,7 +286,7 @@ CREATE TABLE `properties` (
 	`price` INT(11) NOT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `properties` VALUES
 	(1, 'WhispymoundDrive', '2677 Whispymound Drive', '{\"y\":564.89, \"z\":182.959, \"x\":119.384}', '{\"x\":117.347, \"y\":559.506, \"z\":183.304}', '{\"y\":557.032, \"z\":183.301, \"x\":118.037}', '{\"y\":567.798, \"z\":182.131, \"x\":119.249}', '[]', NULL, 1, 1, 0, '{\"x\":118.748, \"y\":566.573, \"z\":175.697}', 1500000),
@@ -333,7 +343,7 @@ CREATE TABLE `billing` (
 	`amount` INT NOT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `fine_types` (
 	`id` INT NOT NULL AUTO_INCREMENT,
@@ -342,7 +352,7 @@ CREATE TABLE `fine_types` (
 	`category` INT DEFAULT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Misuse of a horn', 30, 0),
@@ -405,7 +415,7 @@ CREATE TABLE `cardealer_vehicles` (
 	`price` INT NOT NULL,
 
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `vehicle_sold` (
 	`client` VARCHAR(50) NOT NULL,
@@ -415,7 +425,7 @@ CREATE TABLE `vehicle_sold` (
 	`date` VARCHAR(50) NOT NULL,
 
 	PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `rented_vehicles` (
 	`vehicle` VARCHAR(60) NOT NULL,
@@ -426,14 +436,14 @@ CREATE TABLE `rented_vehicles` (
 	`owner` VARCHAR(60) NOT NULL,
 
 	PRIMARY KEY (`plate`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `vehicle_categories` (
 	`name` VARCHAR(60) NOT NULL,
 	`label` VARCHAR(60) NOT NULL,
 
 	PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `vehicle_categories` (name, label) VALUES
 	('compacts', 'Compacts'),
@@ -456,7 +466,7 @@ CREATE TABLE `vehicles` (
 	`category` VARCHAR(60) DEFAULT NULL,
 
 	PRIMARY KEY (`model`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 INSERT INTO `vehicles` (name, model, price, category) VALUES
 	('Blade', 'blade', 15000, 'muscle'),
@@ -711,7 +721,7 @@ CREATE TABLE `outfits` (
 
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `user_parkings` (
   
@@ -722,4 +732,4 @@ CREATE TABLE `user_parkings` (
   `vehicle` LONGTEXT,
 
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
